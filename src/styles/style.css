@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.red { background-color: red; }
+.white { background-color: white; border: 1px solid black; }
+.beige { background-color: beige; }
+.lightyellow { background-color: lightyellow; }
+.blue { background-color: lightblue; }
+.lightblue { background-color: skyblue; }
+.black { background-color: black; color: white; }
+.brown { background-color: tan; }
+.yellow { background-color: yellow; }
+.grey { background-color: lightgray; }
+
+.box:hover {
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+.title-font{
+    font-size: 40px;
+    font-weight: bold;
+    font-family: monospace, sans-serif;
+    color: black;
+    text-transform: uppercase;
+}
+
+.text-font{
+    font-size: 26px;
+    font-weight: bold;
+    font-family: monospace, sans-serif;
+    color: black;
+    opacity: 0.6;
+}
+
+.social-btn-icon{
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
+
