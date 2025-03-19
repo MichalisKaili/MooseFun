@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Tracker</title>
+    <style>
+        #output {
+            margin-top: 20px;
+        }
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin-top: 20px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mouse Tracker</h1>
+    <div id="output">Move the mouse while holding the left button...</div>
+    <canvas id="drawingCanvas" width=window.innerWidth height=window.innerHeight></canvas>
+
+    <script>
+        const canvas = document.getElementById('drawingCanvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+
+        document.addEventListener('mousedown', function(event) {
+            if (event.button === 0) { // Left mouse button
+                drawing = true;
+                ctx.beginPath();
+                ctx.strokeStyle = 'green';
+                ctx.lineWidth = 10;
+                ctx.lineCap = 'round';
+                ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+                document.addEventListener('mousemove', onMouseMove);
+            }
+        });
+
+        document.addEventListener('mouseup', function(event) {
+            if (event.button === 0) { // Left mouse button
+                drawing = false;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                document.removeEventListener('mousemove', onMouseMove);
+            }
+        });
+
+        function onMouseMove(event) {
+            if (!drawing) return;
+            const x = event.clientX - canvas.offsetLeft;
+            const y = event.clientY - canvas.offsetTop;
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            const output = document.getElementById('output');
+            output.textContent = `Mouse position: (${event.clientX}, ${event.clientY})`;
+        }
+    </script>
+</body>
+</html>
